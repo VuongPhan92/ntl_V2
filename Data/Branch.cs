@@ -14,13 +14,7 @@ namespace Data
     
     public partial class Branch
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Branch()
-        {
-            this.BillOfLandings = new HashSet<BillOfLanding>();
-        }
-    
-        public int Id { get; set; }
+        public string BranchId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
@@ -28,11 +22,7 @@ namespace Data
         public string BranchCode { get; set; }
         public string Description { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedDate { get; set; }
         public Nullable<System.DateTime> DeletedDate { get; set; }
-        public string DeletedBy { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillOfLanding> BillOfLandings { get; set; }
     }
 }

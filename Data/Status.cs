@@ -14,21 +14,12 @@ namespace Data
     
     public partial class Status
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Status()
-        {
-            this.BillOfLandings = new HashSet<BillOfLanding>();
-        }
-    
-        public int Id { get; set; }
-        public string StatusName { get; set; }
-        public string StatusDescription { get; set; }
+        public string StatusId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string SmsContent { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedDate { get; set; }
         public Nullable<System.DateTime> DeletedDate { get; set; }
-        public string DeletedBy { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillOfLanding> BillOfLandings { get; set; }
     }
 }

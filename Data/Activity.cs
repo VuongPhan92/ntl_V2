@@ -14,13 +14,13 @@ namespace Data
     
     public partial class Activity
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Source { get; set; }
         public string Action { get; set; }
         public string Previous_value { get; set; }
         public string Current_value { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }
-        public Nullable<int> Source_Id { get; set; }
+        public string Source_Id { get; set; }
     }
 }

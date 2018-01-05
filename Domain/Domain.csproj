@@ -45,33 +45,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\ActivityAddCommand.cs" />
-    <Compile Include="IServices\IAccountServices.cs" />
+    <Compile Include="Command\Activity\Add\ActivityAddCommand.cs" />
+    <Compile Include="Command\Branch\Add\BranchAddCommand.cs" />
+    <Compile Include="Command\Branch\Delete\BranchDeleteCommand.cs" />
+    <Compile Include="Command\Branch\Update\BranchActiveUpdateCommand.cs" />
+    <Compile Include="Command\Branch\Update\BranchAddressUpdateCommand.cs" />
+    <Compile Include="Command\Branch\Update\BranchEmailUpdateCommand.cs" />
+    <Compile Include="Command\Branch\Update\BranchPhoneUpdateCommand.cs" />
+    <Compile Include="Command\Branch\Update\BranchUpdateCodeCommand.cs" />
+    <Compile Include="Command\Branch\Update\BranchUpdateNameCommand.cs" />
+    <Compile Include="Command\DeliveryType\Add\DeliveryTypeAddCommand.cs" />
+    <Compile Include="Command\DeliveryType\Delete\DeliveryTypeDeleteCommand.cs" />
+    <Compile Include="Command\DeliveryType\Update\DeliveryTypeDescriptioinUpdateCommand.cs" />
+    <Compile Include="Command\DeliveryType\Update\DeliveryTypeNameUpdateCommand.cs" />
+    <Compile Include="Command\DeliveryType\Update\DeliveryTypeValueUpdateCommand.cs" />
+    <Compile Include="Command\Merchandise\Add\MerchandiseTypeAddCommand.cs" />
+    <Compile Include="Command\Merchandise\Delete\MerchandiseTypeDeleteCommand.cs" />
+    <Compile Include="Constant\ExceptionMessageConstant.cs" />
+    <Compile Include="Constant\SucessMessageConstant.cs" />
+    <Compile Include="IServices\IAccountService.cs" />
     <Compile Include="IServices\IActivityService.cs" />
-    <Compile Include="IServices\IBolServices.cs" />
-    <Compile Include="IServices\IBranchServices.cs" />
-    <Compile Include="IServices\ICustomerServices.cs" />
-    <Compile Include="IServices\IDeliveryTypeServices.cs" />
-    <Compile Include="IServices\IEmployeeServices.cs" />
-    <Compile Include="IServices\IMerchandiseTypeServices.cs" />
-    <Compile Include="IServices\IStatisticServices.cs" />
-    <Compile Include="IServices\IStatusServices.cs" />
+    <Compile Include="IServices\IBranchService.cs" />
+    <Compile Include="IServices\IDeliveryTypeService.cs" />
+    <Compile Include="IServices\IMerchandiseTypeService.cs" />
+    <Compile Include="IServices\IStatusService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ConvertVie.cs" />
     <Compile Include="ViewModels\Chart\BarChartVM.cs" />
-    <Compile Include="ViewModels\BolManageVM.cs" />
-    <Compile Include="ViewModels\BolVM.cs" />
     <Compile Include="ViewModels\BranchVM.cs" />
     <Compile Include="ViewModels\Chart\GetMerchandiseOnSpecificLocationDataVM.cs" />
-    <Compile Include="ViewModels\CustomerVM.cs" />
     <Compile Include="ViewModels\DeliveryTypeVM.cs" />
     <Compile Include="ViewModels\Chart\GetBolOnSpecificLocationDataVM.cs" />
-    <Compile Include="ViewModels\EmployeeVM.cs" />
     <Compile Include="ViewModels\MerchandiseTypeVM.cs" />
-    <Compile Include="ViewModels\ComponentVM.cs" />
     <Compile Include="ViewModels\SpeedSMS.cs" />
-    <Compile Include="ViewModels\TransactionVM.cs" />
-    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Infrastructure\Core\Core.csproj">
@@ -86,6 +92,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -10,8 +10,8 @@ namespace API.Controllers
     [RoutePrefix("NgocTrang/Api/Status")]
     public class StatusController : BaseController
     {
-        private IStatusServices iStatusServices;
-        public StatusController(IStatusServices _iStatusServices)
+        private IStatusService iStatusServices;
+        public StatusController(IStatusService _iStatusServices)
         {
             iStatusServices = _iStatusServices;
         }

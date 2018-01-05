@@ -14,22 +14,12 @@ namespace Data
     
     public partial class DeliveryType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DeliveryType()
-        {
-            this.BillOfLandings = new HashSet<BillOfLanding>();
-        }
-    
-        public int Id { get; set; }
+        public string DeliveryId { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         public Nullable<int> Value { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
+        public Nullable<System.DateTime> LastModifiedDate { get; set; }
         public Nullable<System.DateTime> DeletedDate { get; set; }
-        public string DeletedBy { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillOfLanding> BillOfLandings { get; set; }
+        public string Description { get; set; }
     }
 }

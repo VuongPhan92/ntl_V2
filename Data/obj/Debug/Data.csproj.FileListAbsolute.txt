@@ -98,3 +98,13 @@ C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\Data\bin\Debug\Enti
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\Data\obj\Debug\Data.dll
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\Data\obj\Debug\Data.pdb
+D:\NTLBE\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\NTLBE\Data\obj\Debug\Data.dll
+D:\NTLBE\Data\obj\Debug\Data.pdb
+D:\NTLBE\Data\bin\Debug\Data.dll.config
+D:\NTLBE\Data\bin\Debug\Data.dll
+D:\NTLBE\Data\bin\Debug\Data.pdb
+D:\NTLBE\Data\bin\Debug\EntityFramework.dll
+D:\NTLBE\Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\NTLBE\Data\bin\Debug\EntityFramework.xml
+D:\NTLBE\Data\bin\Debug\EntityFramework.SqlServer.xml

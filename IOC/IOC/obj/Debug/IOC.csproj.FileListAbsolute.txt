@@ -280,3 +280,34 @@ C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\IOC\IOC\bin\Debug\D
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\IOC\IOC\obj\Debug\IOC.csprojResolveAssemblyReference.cache
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\IOC\IOC\obj\Debug\IOC.dll
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\IOC\IOC\obj\Debug\IOC.pdb
+D:\NTLBE\IOC\IOC\bin\Debug\IOC.dll
+D:\NTLBE\IOC\IOC\bin\Debug\IOC.pdb
+D:\NTLBE\IOC\IOC\bin\Debug\Core.dll
+D:\NTLBE\IOC\IOC\bin\Debug\Domain.dll
+D:\NTLBE\IOC\IOC\bin\Debug\Infrastructure.dll
+D:\NTLBE\IOC\IOC\bin\Debug\Newtonsoft.Json.dll
+D:\NTLBE\IOC\IOC\bin\Debug\SimpleInjector.dll
+D:\NTLBE\IOC\IOC\bin\Debug\SimpleInjector.Integration.WebApi.dll
+D:\NTLBE\IOC\IOC\bin\Debug\System.Net.Http.Formatting.dll
+D:\NTLBE\IOC\IOC\bin\Debug\System.Web.Http.dll
+D:\NTLBE\IOC\IOC\bin\Debug\WebCore.dll
+D:\NTLBE\IOC\IOC\bin\Debug\EntityFramework.dll
+D:\NTLBE\IOC\IOC\bin\Debug\Data.dll
+D:\NTLBE\IOC\IOC\bin\Debug\Core.pdb
+D:\NTLBE\IOC\IOC\bin\Debug\Core.dll.config
+D:\NTLBE\IOC\IOC\bin\Debug\Infrastructure.pdb
+D:\NTLBE\IOC\IOC\bin\Debug\Infrastructure.dll.config
+D:\NTLBE\IOC\IOC\bin\Debug\Domain.pdb
+D:\NTLBE\IOC\IOC\bin\Debug\WebCore.pdb
+D:\NTLBE\IOC\IOC\bin\Debug\WebCore.dll.config
+D:\NTLBE\IOC\IOC\bin\Debug\Newtonsoft.Json.xml
+D:\NTLBE\IOC\IOC\bin\Debug\SimpleInjector.xml
+D:\NTLBE\IOC\IOC\bin\Debug\SimpleInjector.Integration.WebApi.xml
+D:\NTLBE\IOC\IOC\bin\Debug\System.Net.Http.Formatting.xml
+D:\NTLBE\IOC\IOC\bin\Debug\System.Web.Http.xml
+D:\NTLBE\IOC\IOC\bin\Debug\EntityFramework.xml
+D:\NTLBE\IOC\IOC\bin\Debug\Data.pdb
+D:\NTLBE\IOC\IOC\bin\Debug\Data.dll.config
+D:\NTLBE\IOC\IOC\obj\Debug\IOC.csprojResolveAssemblyReference.cache
+D:\NTLBE\IOC\IOC\obj\Debug\IOC.dll
+D:\NTLBE\IOC\IOC\obj\Debug\IOC.pdb

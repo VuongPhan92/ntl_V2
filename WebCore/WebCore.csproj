@@ -94,72 +94,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\ActivityAdd\ActivityAddCommandHandler.cs" />
-    <Compile Include="Command\BolAdd\BolAddCommand.cs" />
-    <Compile Include="Command\BolAdd\BolAddCommandHandler.cs" />
-    <Compile Include="Command\BolUpdateStatus\BolStatusUpdateCommand.cs" />
-    <Compile Include="Command\BolUpdateStatus\BolStatusUpdateCommandHandler.cs" />
-    <Compile Include="Command\BolUpdateStatus\BolUpdateStatusByBolCodeCommand.cs" />
-    <Compile Include="Command\BolUpdateStatus\BolUpdateStatusByBolCodeCommandHandler.cs" />
-    <Compile Include="Command\BranchDelete\BranchDeleteCommandHandler.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdateAddress\BranchAddressUpdateCommand.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdateAddress\BranchAddressUpdateCommandHandler.cs" />
-    <Compile Include="Command\BranchAdd\BranchAddCommand.cs" />
-    <Compile Include="Command\BranchAdd\BranchAddCommandHandler.cs" />
-    <Compile Include="Command\BranchDelete\BranchDeleteCommand.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdateCode\BranchUpdateCodeCommand.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdateCode\BranchUpdateCodeCommandHandler.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdateEmail\BranchEmailUpdateCommand.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdateEmail\BranchEmailUpdateCommandHandler.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdateName\BranchUpdateNameCommand.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdateName\BranchUpdateNameCommandHandler.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdatePhone\BranchPhoneUpdateCommand.cs" />
-    <Compile Include="Command\BranchUpdate\BranchUpdatePhone\BranchPhoneUpdateCommandHandler.cs" />
-    <Compile Include="Command\EmployeeAdd\EmployeeAddCommand.cs" />
-    <Compile Include="Command\EmployeeAdd\EmployeeAddCommandHandler.cs" />
-    <Compile Include="Command\EmployeeDelete\EmployeeDeleteCommandHandler.cs" />
-    <Compile Include="Command\MerchandiseTypeAdd\MerchandiseTypeAddCommandHandler.cs" />
-    <Compile Include="Command\MerchandiseTypeAdd\MerchandiseTypeAddCommand.cs" />
-    <Compile Include="Command\EmployeeDelete\EmployeeDeleteCommand.cs" />
-    <Compile Include="Command\MerchandiseTypeDelete\MerchandiseTypeDeleteCommand.cs" />
-    <Compile Include="Command\MerchandiseTypeDelete\MerchandiseTypeDeleteCommandHandler.cs" />
-    <Compile Include="Queries\Account\AccountValidationByIdPasswordQuery.cs" />
-    <Compile Include="Queries\Account\AccountValidationByIdPasswordQueryHandler.cs" />
-    <Compile Include="Queries\BolSearch\GetBolByBolCodeQuery.cs" />
-    <Compile Include="Queries\BolSearch\GetBolByBolCodeQueryHandler.cs" />
-    <Compile Include="Queries\BolSearch\GetBolByIdQuery.cs" />
-    <Compile Include="Queries\BolSearch\GetBolByIdQueryHandler.cs" />
-    <Compile Include="Queries\BranchGetAll\BranchGetAllQuery.cs" />
-    <Compile Include="Queries\BolGetAll\BolGetAllQueryHandler.cs" />
-    <Compile Include="Queries\BolGetAll\BolGetAllQuery.cs" />
+    <Compile Include="Command\Activity\Add\ActivityAddCommandHandler.cs" />
+    <Compile Include="Command\Branch\Delete\BranchDeleteCommandHandler.cs" />
+    <Compile Include="Command\Branch\Update\Active\BranchActiveUpdateCommandHandler.cs" />
+    <Compile Include="Command\Branch\Update\Address\BranchAddressUpdateCommandHandler.cs" />
+    <Compile Include="Command\Branch\Add\BranchAddCommandHandler.cs" />
+    <Compile Include="Command\Branch\Update\UpdateCode\BranchUpdateCodeCommandHandler.cs" />
+    <Compile Include="Command\Branch\Update\Email\BranchEmailUpdateCommandHandler.cs" />
+    <Compile Include="Command\Branch\Update\Name\BranchUpdateNameCommandHandler.cs" />
+    <Compile Include="Command\Branch\Update\Phone\BranchPhoneUpdateCommandHandler.cs" />
+    <Compile Include="Command\DeliveryType\Add\DeliveryTypeAddCommandHandler.cs" />
+    <Compile Include="Command\Merchandise\Add\MerchandiseTypeAddCommandHandler.cs" />
+    <Compile Include="Command\Merchandise\Delete\MerchandiseTypeDeleteCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\BranchGetAll\BranchGetAllQueryHandler.cs" />
-    <Compile Include="Queries\CustomerGetAll\CustomerGetAllQuery.cs" />
-    <Compile Include="Queries\CustomerGetAll\CustomerGetAllQueryHandler.cs" />
-    <Compile Include="Queries\CustomerGetById\GetCustomerByPhoneQuery.cs" />
-    <Compile Include="Queries\CustomerGetById\GetCustomerByPhoneQueryHandler.cs" />
-    <Compile Include="Queries\DeliveryTypeGetAll\DeliveryTypeGetAllQueryHandler.cs" />
-    <Compile Include="Queries\EmployeeGetAll\EmployeeGetAllQuery.cs" />
-    <Compile Include="Queries\EmployeeGetAll\EmployeeGetAllQueryHandler.cs" />
-    <Compile Include="Queries\MerchandiseTypeGetAll\MerchandiseTypeGetAllQueryHandler.cs" />
-    <Compile Include="Queries\MerchandiseTypeGetAll\MerchandiseTypeGetAllQuery.cs" />
-    <Compile Include="Queries\DeliveryTypeGetAll\DeliveryTypeGetAllQuery.cs" />
-    <Compile Include="Queries\StatusCodeGetAll\StatusCodeGetAllQueryHandler.cs" />
-    <Compile Include="Queries\StatusCodeGetAll\StatusCodeGetAllQuery.cs" />
-    <Compile Include="Queries\BranchGetById\BranchGetByIdQuery.cs" />
-    <Compile Include="Queries\BranchGetById\BranchGetByIdQueyHandler.cs" />
-    <Compile Include="Queries\CustomterSearch\CustomerSearchQuery.cs" />
-    <Compile Include="Queries\CustomterSearch\CustomerSearchQueryHandler.cs" />
-    <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Services\ActivityServices.cs" />
-    <Compile Include="Services\BolServices.cs" />
-    <Compile Include="Services\BranchServices.cs" />
-    <Compile Include="Services\CustomerServices.cs" />
-    <Compile Include="Services\DeliveryTypeServices.cs" />
-    <Compile Include="Services\EmployeeServices.cs" />
-    <Compile Include="Services\MerchandiseTypeServices.cs" />
-    <Compile Include="Services\StatisticServices.cs" />
-    <Compile Include="Services\StatusServices.cs" />
+    <Compile Include="Queries\Branch\GetActive\BranchGetActiveQuery.cs" />
+    <Compile Include="Queries\Branch\GetActive\BranchGetActiveQueryHandler.cs" />
+    <Compile Include="Queries\Branch\GetAll\BranchGetAllQuery.cs" />
+    <Compile Include="Queries\Branch\GetAll\BranchGetAllQueryHandler.cs" />
+    <Compile Include="Queries\Delivery\GetAll\DeliveryTypeGetAllQueryHandler.cs" />
+    <Compile Include="Queries\Merchandise\MerchandiseTypeGetAll\MerchandiseTypeGetAllQueryHandler.cs" />
+    <Compile Include="Queries\Merchandise\MerchandiseTypeGetAll\MerchandiseTypeGetAllQuery.cs" />
+    <Compile Include="Queries\Delivery\GetAll\DeliveryTypeGetAllQuery.cs" />
+    <Compile Include="Queries\Status\StatusCodeGetAll\StatusCodeGetAllQueryHandler.cs" />
+    <Compile Include="Queries\Status\StatusCodeGetAll\StatusCodeGetAllQuery.cs" />
+    <Compile Include="Queries\Branch\GetById\BranchGetByIdQuery.cs" />
+    <Compile Include="Queries\Branch\GetById\BranchGetByIdQueyHandler.cs" />
+    <Compile Include="Services\ActivityService.cs" />
+    <Compile Include="Services\BranchService.cs" />
+    <Compile Include="Services\DeliveryTypeService.cs" />
+    <Compile Include="Services\MerchandiseTypeService.cs" />
+    <Compile Include="Services\StatusService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -184,8 +148,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Command\CustomerAdd\" />
-    <Folder Include="Queries\EmployeeGetById\" />
+    <Folder Include="Command\DeliveryType\Delete\" />
+    <Folder Include="Command\DeliveryType\Update\" />
+    <Folder Include="Command\Merchandise\Update\Active\" />
+    <Folder Include="Command\Merchandise\Update\CalculationUnit\" />
+    <Folder Include="Command\Merchandise\Update\Name\" />
+    <Folder Include="Command\Merchandise\Update\Type\" />
+    <Folder Include="Command\Status\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

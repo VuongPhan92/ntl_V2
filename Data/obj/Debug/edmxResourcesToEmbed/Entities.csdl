@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NgocTrang_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="7" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BranchId" />
+    </Key>
+    <Property Name="BranchId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BranchCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="7" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="DeliveryType">
+    <Key>
+      <PropertyRef Name="DeliveryId" />
+    </Key>
+    <Property Name="DeliveryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="7" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="MerchandiseType">
+    <Key>
+      <PropertyRef Name="MerchandiseId" />
+    </Key>
+    <Property Name="MerchandiseId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="7" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="7" />
+    <Property Name="CalculationUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SmsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="7" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Branches" EntityType="Self.Branch" />
+    <EntitySet Name="DeliveryTypes" EntityType="Self.DeliveryType" />
+    <EntitySet Name="MerchandiseTypes" EntityType="Self.MerchandiseType" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="Activities" EntityType="NgocTrang_V2Model.Activity" />
+  </EntityContainer>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Previous_value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Current_value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Source_Id" Type="Int32" />
+  </EntityType>
+</Schema>

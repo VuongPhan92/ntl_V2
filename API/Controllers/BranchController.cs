@@ -1,6 +1,9 @@
-﻿using Domain.IServices;
+﻿using Domain.Command;
+using Domain.Constant;
+using Domain.IServices;
 using Domain.ViewModels;
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -10,144 +13,258 @@ namespace API.Controllers
     [RoutePrefix("NgocTrang/Api/Branch")]
     public class BranchController : BaseController
     {
-        private IBranchServices iBranchServices;
-        public BranchController(IBranchServices _iBranchServices)
+        private IBranchService iBranchService;
+        private IAccountService iAccountService;
+        public BranchController(IBranchService _iBranchService, IAccountService _iAccountService)
         {
-            iBranchServices = _iBranchServices;
+            iBranchService = _iBranchService;
+            iAccountService = _iAccountService;
         }
 
-        //GET: NgocTrang/Api/Bol/GetBranches
-        [Route("GetAll")]
+        //GET: NgocTrang/Api/Branch/GetActive
+        [Route("GetActiveBranches")]
         [HttpGet]
-        public HttpResponseMessage GetAllBranch()
+        public HttpResponseMessage GetActiveBranches(string token)
         {
             try
             {
-                var branches = iBranchServices.GetAllBranches();
-                if (branches != null)
+                var branchesList = iBranchService.GetActiveBranches().ToList();
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if(!isAllow)
                 {
-                    return GetResponse(iBranchServices.GetAllBranches(), HttpStatusCode.OK);
+                    return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
-                else
+                if(branchesList != null)
                 {
-                    return GetResponse(HttpStatusCode.ExpectationFailed, "Cannot get all branches");
+                    if (branchesList.Count > 0)
+                    {
+                        return GetResponseSuccess(branchesList, HttpStatusCode.OK);
+                    }
+                    else
+                    {
+                        return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.EmptyListExceptionMassage);
+                    }
                 }
+                return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.NullListExceptionMessage);
             }
             catch (Exception ex)
             {
-                return GetResponse(HttpStatusCode.ExpectationFailed, ex.Message);
+                return GetResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
 
-        //POST: NgocTrang/Api/Bol/Add
+        //GET: NgocTrang/Api/Branch/GetAll
+        [Route("GetAllBranches")]
+        [HttpGet]
+        public HttpResponseMessage GetAllBranches(string token)
+        {
+            try
+            {
+                var branchesList = iBranchService.GetAllBranches().ToList();
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if(!isAllow)
+                {
+                    return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                if (branchesList != null)
+                {
+                    if (branchesList.Count > 0)
+                    {
+                        return GetResponseSuccess(branchesList, HttpStatusCode.OK);
+                    }
+                    else
+                    {
+                        return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.EmptyListExceptionMassage);
+                    }
+                }
+                return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.NullListExceptionMessage);
+            }
+            catch (Exception ex)
+            {
+                return GetResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/Branch/Add
         [Route("Add")]
         [HttpPost]
-        public HttpResponseMessage AddBranch(BranchVM branchVM)
+        public HttpResponseMessage Add(BranchVM branchVM,string token)
         {
             try
             {
-                iBranchServices.AddBranch(branchVM);
-                return PostResponse(HttpStatusCode.OK);
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if(!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                branchVM.UserId = tokenizedUserId;
+                iBranchService.AddBranch(branchVM);
+                return PostResponseSuccess(HttpStatusCode.OK,SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
             }
             catch (Exception ex)
             {
-                return PostResponse(HttpStatusCode.ExpectationFailed, ex.Message);
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
 
-        //POST: NgocTrang/Api/Bol/UpdateName/1/ABC
+        //POST: NgocTrang/Api/Branch/UpdateName/1/ABC
         [Route("UpdateName/{id}/{name}")]
         [HttpPost]
-        public HttpResponseMessage UpdateBranchName(int id, string name)
+        public HttpResponseMessage UpdateBranchName(string id, string name,string token)
         {
             try
             {
-                iBranchServices.UpdateBranchName(id, name);
-                return PostResponse(HttpStatusCode.OK);
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iBranchService.UpdateBranchName(id, name , tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
             }
             catch (Exception ex)
             {
-                return PostResponse(HttpStatusCode.ExpectationFailed, ex.Message);
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
 
-        //POST: NgocTrang/Api/Bol/UpdateAddress/1/address
+        //POST: NgocTrang/Api/Branch/UpdateAddress/1/address
         [Route("UpdateAddress/{id}/{address}")]
         [HttpPost]
-        public HttpResponseMessage UpdateBranchAddress(int id, string address)
+        public HttpResponseMessage UpdateBranchAddress(string id, string address, string token)
         {
             try
             {
-                iBranchServices.UpdateBranchAddress(id, address);
-                return PostResponse(HttpStatusCode.OK);
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iBranchService.UpdateBranchAddress(id, address, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
             }
             catch (Exception ex)
             {
-                return PostResponse(HttpStatusCode.ExpectationFailed, ex.Message);
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
 
-        //POST: NgocTrang/Api/Bol/UpdatePhone/1/012345
+        //POST: NgocTrang/Api/Branch/UpdatePhone/1/012345
         [Route("UpdatePhone/{id}/{phone}")]
         [HttpPost]
-        public HttpResponseMessage UpdateBranchPhone(int id, string phone)
+        public HttpResponseMessage UpdateBranchPhone(string id, string phone,string token)
         {
             try
             {
-                iBranchServices.UpdateBranchName(id, phone);
-                return PostResponse(HttpStatusCode.OK);
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }                                                    
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iBranchService.UpdateBranchName(id, phone, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
             }
             catch (Exception ex)
             {
-                return PostResponse(HttpStatusCode.ExpectationFailed, ex.Message);
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
 
-        //POST: NgocTrang/Api/Bol/UpdateEmail/1/abc@gxyz.com
+        //POST: NgocTrang/Api/Branch/UpdateEmail/1/abc@gxyz.com
         [Route("UpdateEmail/{id}/{email}")]
         [HttpPost]
-        public HttpResponseMessage UpdateBranchEmail(int id, string email)
+        public HttpResponseMessage UpdateBranchEmail(string id, string email, string token)
         {
             try
             {
-                iBranchServices.UpdateBranchName(id, email);
-                return PostResponse(HttpStatusCode.OK);
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iBranchService.UpdateBranchName(id, email, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
             }
             catch (Exception ex)
             {
-                return PostResponse(HttpStatusCode.ExpectationFailed, ex.Message);
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
 
-        //POST: NgocTrang/Api/Bol/UpdateCode
+        //POST: NgocTrang/Api/Branch/UpdateCode
         [Route("UpdateCode/{id}/{branchCode}")]
         [HttpPost]
-        public HttpResponseMessage UpdateBranchCode(int id, string branchCode)
+        public HttpResponseMessage UpdateBranchCode(string id, string branchCode, string token)
         {
             try
             {
-                iBranchServices.UpdateBranchCode(id, branchCode);
-                return PostResponse(HttpStatusCode.OK);
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iBranchService.UpdateBranchCode(id, branchCode, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
             }
             catch (Exception ex)
             {
-                return PostResponse(HttpStatusCode.ExpectationFailed, ex.Message);
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
 
-        //POST: NgocTrang/Api/Bol/Delete
+        //POST: NgocTrang/Api/Branch/Delete
         [Route("Delete/{id}")]
         [HttpPost]
-        public HttpResponseMessage DeleteBranch(int id)
+        public HttpResponseMessage DeleteBranch(string id,string token)
         {
             try
             {
-                iBranchServices.DeleteBranch(id);
-                return PostResponse(HttpStatusCode.OK);
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iBranchService.DeleteBranch(id, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
             }
             catch (Exception ex)
             {
-                return PostResponse(HttpStatusCode.ExpectationFailed, ex.Message);
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
     }

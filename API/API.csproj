@@ -256,13 +256,9 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\DeliveryTypeController.cs" />
-    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\BolController.cs" />
     <Compile Include="Controllers\MerchandiseTypeController.cs" />
-    <Compile Include="Controllers\StatisticController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

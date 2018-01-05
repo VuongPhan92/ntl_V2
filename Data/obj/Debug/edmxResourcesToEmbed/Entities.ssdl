@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NgocTrang_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Token" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="LastModifiedDate" Type="datetime2" Precision="7" />
+    <Property Name="DeletedDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Source" Type="nvarchar" MaxLength="50" />
+    <Property Name="Action" Type="nvarchar" MaxLength="10" />
+    <Property Name="Previous_value" Type="nvarchar(max)" />
+    <Property Name="Current_value" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="Source_Id" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BranchId" />
+    </Key>
+    <Property Name="BranchId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="BranchCode" Type="nchar" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="LastModifiedDate" Type="datetime2" Precision="7" />
+    <Property Name="DeletedDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="DeliveryType">
+    <Key>
+      <PropertyRef Name="DeliveryId" />
+    </Key>
+    <Property Name="DeliveryId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Value" Type="int" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="LastModifiedDate" Type="datetime2" Precision="7" />
+    <Property Name="DeletedDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="MerchandiseType">
+    <Key>
+      <PropertyRef Name="MerchandiseId" />
+    </Key>
+    <Property Name="MerchandiseId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="LastModifiedDate" Type="datetime2" Precision="7" />
+    <Property Name="DeletedDate" Type="datetime2" Precision="7" />
+    <Property Name="CalculationUnit" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="SmsContent" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+    <Property Name="LastModifiedDate" Type="datetime2" Precision="7" />
+    <Property Name="DeletedDate" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityContainer Name="NgocTrang_V2ModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliveryType" EntityType="Self.DeliveryType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MerchandiseType" EntityType="Self.MerchandiseType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -4,8 +4,9 @@ namespace Domain.ViewModels
 {
     public class MerchandiseTypeVM
     {
-        public int Id { get; set; }
-        public string MerchandiseType1 { get; set; }
+        public string MerchandiseId { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
         public Nullable<decimal> Value { get; set; }
         public string CalculationUnit { get; set; }
         public string Description { get; set; }

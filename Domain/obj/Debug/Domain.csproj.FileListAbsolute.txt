@@ -132,3 +132,18 @@ C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\Domain\bin\Debug\En
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\Domain\obj\Debug\Domain.dll
 C:\Users\admin\Documents\_Source\New folder\New folder\NTLBE\Domain\obj\Debug\Domain.pdb
+D:\NTLBE\Domain\bin\Debug\Domain.dll
+D:\NTLBE\Domain\bin\Debug\Domain.pdb
+D:\NTLBE\Domain\bin\Debug\Core.dll
+D:\NTLBE\Domain\bin\Debug\Data.dll
+D:\NTLBE\Domain\bin\Debug\SimpleInjector.dll
+D:\NTLBE\Domain\bin\Debug\EntityFramework.dll
+D:\NTLBE\Domain\bin\Debug\Core.pdb
+D:\NTLBE\Domain\bin\Debug\Core.dll.config
+D:\NTLBE\Domain\bin\Debug\Data.pdb
+D:\NTLBE\Domain\bin\Debug\Data.dll.config
+D:\NTLBE\Domain\bin\Debug\SimpleInjector.xml
+D:\NTLBE\Domain\bin\Debug\EntityFramework.xml
+D:\NTLBE\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+D:\NTLBE\Domain\obj\Debug\Domain.dll
+D:\NTLBE\Domain\obj\Debug\Domain.pdb

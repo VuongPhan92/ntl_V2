@@ -12,5 +12,6 @@ namespace Domain.ViewModels
         public string Email { get; set; }
         public string BranchCode { get; set; }
         public string Description { get; set; }
+        public string UserId { get; set; }
     }
 }

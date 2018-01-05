@@ -10,12 +10,7 @@ namespace API.Controllers
         {
             return "value";
         }
-        private IBolServices iBolServices;
-        public ValuesController(IBolServices _a)
-        {
-            iBolServices = _a;
-        }
-
+    
         // POST api/values
         public void Post([FromBody]string value)
         {
@@ -32,14 +27,5 @@ namespace API.Controllers
         }
     }
 
-    public class Value
-    {
-        
-        private IBolServices iBolServices;
-        public Value(IBolServices _a)
-        {
-            iBolServices = _a;
-        }
-
-    }
+   
 }

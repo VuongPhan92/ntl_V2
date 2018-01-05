@@ -11,8 +11,8 @@ namespace API.Controllers
     [RoutePrefix("NgocTrang/Api/MerchandiseType")]
     public class MerchandiseTypeController : BaseController
     {
-        private IMerchandiseTypeServices iMerchandiseTypeServices;
-        public MerchandiseTypeController(IMerchandiseTypeServices _iMerchandiseTypeServices)
+        private IMerchandiseTypeService iMerchandiseTypeServices;
+        public MerchandiseTypeController(IMerchandiseTypeService _iMerchandiseTypeServices)
         {
             iMerchandiseTypeServices = _iMerchandiseTypeServices;
         }
@@ -60,7 +60,7 @@ namespace API.Controllers
         //POST: NgocTrang/Api/MerchandiseType/Delete/id
         [Route("Delete/{id}")]
         [HttpPost]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage Delete(string id)
         {
             try
             {
