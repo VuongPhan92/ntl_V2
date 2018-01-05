@@ -37,6 +37,7 @@
     <Property Name="CreatedDate" Type="DateTime" Precision="7" />
     <Property Name="LastModifiedDate" Type="DateTime" Precision="7" />
     <Property Name="DeletedDate" Type="DateTime" Precision="7" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="MerchandiseType">
     <Key>
@@ -82,6 +83,6 @@
     <Property Name="Current_value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CreatedDate" Type="DateTime" Precision="7" />
     <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Source_Id" Type="Int32" />
+    <Property Name="Source_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

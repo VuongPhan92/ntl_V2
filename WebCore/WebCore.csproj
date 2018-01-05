@@ -104,14 +104,30 @@
     <Compile Include="Command\Branch\Update\Name\BranchUpdateNameCommandHandler.cs" />
     <Compile Include="Command\Branch\Update\Phone\BranchPhoneUpdateCommandHandler.cs" />
     <Compile Include="Command\DeliveryType\Add\DeliveryTypeAddCommandHandler.cs" />
+    <Compile Include="Command\DeliveryType\Delete\DeliveryTypeDeleteCommandHandler.cs" />
+    <Compile Include="Command\DeliveryType\Update\Active\DeliveryTypeUpdateActiveCommandHandler.cs" />
+    <Compile Include="Command\DeliveryType\Update\Description\DeliveryTypeDescriptionUpdateCommandHandler.cs" />
+    <Compile Include="Command\DeliveryType\Update\Name\DeliveryTypeUpdateNameCommandHandler.cs" />
+    <Compile Include="Command\DeliveryType\Update\Value\DeliveryTypeUpdateValueCommandHandler.cs" />
     <Compile Include="Command\Merchandise\Add\MerchandiseTypeAddCommandHandler.cs" />
     <Compile Include="Command\Merchandise\Delete\MerchandiseTypeDeleteCommandHandler.cs" />
+    <Compile Include="Command\Merchandise\Update\Active\MerchandiseTypeActiveUpdateCommandHandler.cs" />
+    <Compile Include="Command\Merchandise\Update\CalculationUnit\MerchandiseTypeUnitUpdateCommandHandler.cs" />
+    <Compile Include="Command\Merchandise\Update\Name\MerchandiseTypeNameUpdateCommandHandler.cs" />
+    <Compile Include="Command\Merchandise\Update\Description\MerchandiseTypeDescriptionUpdateCommandHandler.cs" />
+    <Compile Include="Command\Merchandise\Update\Type\MerchandiseTypeTypeUpdateCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Branch\GetActive\BranchGetActiveQuery.cs" />
     <Compile Include="Queries\Branch\GetActive\BranchGetActiveQueryHandler.cs" />
     <Compile Include="Queries\Branch\GetAll\BranchGetAllQuery.cs" />
     <Compile Include="Queries\Branch\GetAll\BranchGetAllQueryHandler.cs" />
+    <Compile Include="Queries\Delivery\GetActive\DeliveryTypeGetActiveQuery.cs" />
+    <Compile Include="Queries\Delivery\GetActive\DeliveryTypeGetActiveQueryHandler.cs" />
     <Compile Include="Queries\Delivery\GetAll\DeliveryTypeGetAllQueryHandler.cs" />
+    <Compile Include="Queries\Delivery\GetById\DeliveryTypeGetByIdQuery.cs" />
+    <Compile Include="Queries\Delivery\GetById\DeliveryTypeGetByIdQueryHandler.cs" />
+    <Compile Include="Queries\Merchandise\GetAll\MerchandiseTypeGetAllQuery.cs" />
+    <Compile Include="Queries\Merchandise\GetAll\MerchandiseTypeGetAllQueryHandler.cs" />
     <Compile Include="Queries\Merchandise\MerchandiseTypeGetAll\MerchandiseTypeGetAllQueryHandler.cs" />
     <Compile Include="Queries\Merchandise\MerchandiseTypeGetAll\MerchandiseTypeGetAllQuery.cs" />
     <Compile Include="Queries\Delivery\GetAll\DeliveryTypeGetAllQuery.cs" />
@@ -148,12 +164,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Command\DeliveryType\Delete\" />
-    <Folder Include="Command\DeliveryType\Update\" />
-    <Folder Include="Command\Merchandise\Update\Active\" />
-    <Folder Include="Command\Merchandise\Update\CalculationUnit\" />
-    <Folder Include="Command\Merchandise\Update\Name\" />
-    <Folder Include="Command\Merchandise\Update\Type\" />
     <Folder Include="Command\Status\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -50,6 +50,7 @@
     <Property Name="CreatedDate" Type="datetime2" Precision="7" />
     <Property Name="LastModifiedDate" Type="datetime2" Precision="7" />
     <Property Name="DeletedDate" Type="datetime2" Precision="7" />
+    <Property Name="Description" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="MerchandiseType">
     <Key>

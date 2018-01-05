@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace WebCore.Command
 {
-    public class DeliveryTypeDescriptionUpdateCommandHandler : ICommandHandler<DeliveryTypeDescriptioinUpdateCommand>
+    public class DeliveryTypeDescriptionUpdateCommandHandler : ICommandHandler<DeliveryTypeDescriptionUpdateCommand>
     {
         private readonly IActivityService iActivityServices;
         public DeliveryTypeDescriptionUpdateCommandHandler(IActivityService _iActivityServices)
@@ -17,7 +17,7 @@ namespace WebCore.Command
             iActivityServices = _iActivityServices;
         }
 
-        public void Handle(DeliveryTypeDescriptioinUpdateCommand command)
+        public void Handle(DeliveryTypeDescriptionUpdateCommand command)
         {
             using (var uow = new UnitOfWork<EF>())
             {

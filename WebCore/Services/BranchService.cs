@@ -6,6 +6,7 @@ using Infrastructure.Decorator;
 using Infrastructure.Queries;
 using System.Collections.Generic;
 using WebCore.Queries;
+using System;
 
 namespace WebCore.Services
 {
@@ -19,8 +20,10 @@ namespace WebCore.Services
         private readonly ICommandHandler<BranchAddressUpdateCommand> updateBranchAddressHandler;
         private readonly ICommandHandler<BranchPhoneUpdateCommand> updateBranchPhoneHandler;
         private readonly ICommandHandler<BranchEmailUpdateCommand> updateBranchEmailHandler;
-        private readonly ICommandHandler<BranchDeleteCommand> deleteBranchHandler;
+        private readonly ICommandHandler<BranchDeleteCommand> inactiveBranchHandler;
         private readonly ICommandHandler<BranchUpdateCodeCommand> updateBranchCodeHandler;
+        private readonly ICommandHandler<BranchActiveUpdateCommand> activeBranchHandler;
+
 
         public BranchService(
             IQueryHandler<BranchGetActiveQuery, IEnumerable<Branch>> _getActiveBranchHandler,
@@ -31,8 +34,9 @@ namespace WebCore.Services
             ICommandHandler<BranchAddressUpdateCommand> _updateBranchAddressHandler,
             ICommandHandler<BranchPhoneUpdateCommand> _updateBranchPhoneHandler,
             ICommandHandler<BranchEmailUpdateCommand> _updateBranchEmailHandler,
-            ICommandHandler<BranchDeleteCommand> _deleteBranchHandler,
-            ICommandHandler<BranchUpdateCodeCommand> _updateBranchCodeHandler
+            ICommandHandler<BranchDeleteCommand> _inactiveBranchHandler,
+            ICommandHandler<BranchUpdateCodeCommand> _updateBranchCodeHandler,
+            ICommandHandler<BranchActiveUpdateCommand> _activeBranchHandler
             )
         {
             getActiveBranchHandler = _getActiveBranchHandler;
@@ -43,9 +47,9 @@ namespace WebCore.Services
             updateBranchAddressHandler = _updateBranchAddressHandler;
             updateBranchPhoneHandler = _updateBranchPhoneHandler;
             updateBranchEmailHandler = _updateBranchEmailHandler;
-            deleteBranchHandler = _deleteBranchHandler;
+            inactiveBranchHandler = _inactiveBranchHandler;
             updateBranchCodeHandler = _updateBranchCodeHandler;
-
+            activeBranchHandler = _activeBranchHandler;
         }
 
         public IEnumerable<Branch> GetActiveBranches()
@@ -90,11 +94,16 @@ namespace WebCore.Services
         public void UpdateBranchCode(string branchId, string branchCode, string userId)
         {
             updateBranchCodeHandler.Handle(new BranchUpdateCodeCommand { BranchId = branchId, BranchCode = branchCode, UserId = userId });
+        }     
+
+        public void ActiveBranch(string branchId, string userId)
+        {
+            activeBranchHandler.Handle(new BranchActiveUpdateCommand { BranchId = branchId, UserId = userId });
         }
 
-        public void DeleteBranch(string branchId,string userId)
+        public void InactiveBranch(string branchId, string userId)
         {
-            deleteBranchHandler.Handle(new BranchDeleteCommand { BranchId = branchId ,UserId= userId});
+            inactiveBranchHandler.Handle(new BranchDeleteCommand { BranchId = branchId, UserId = userId });
         }
     }
 }

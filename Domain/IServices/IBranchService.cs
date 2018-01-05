@@ -69,11 +69,18 @@ namespace Domain.IServices
         void UpdateBranchCode(string branchId, string branchCode, string userId);
 
         /// <summary>
+        /// Active specific inactive branch 
+        /// </summary>
+        /// <param name="branchId">Guid of branch</param>
+        /// <param name="userId">Guid of user</param>
+        void ActiveBranch(string branchId, string userId);
+
+        /// <summary>
         /// Inactive specific branch 
         /// </summary>
         /// <param name="branchId">Guid of branch</param>
         /// <param name="userId">Guid of user</param>
-        void DeleteBranch(string branchId,string userId);
+        void InactiveBranch(string branchId,string userId);
 
       
        

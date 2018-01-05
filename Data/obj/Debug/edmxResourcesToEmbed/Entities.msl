@@ -33,6 +33,7 @@
     <EntitySetMapping Name="DeliveryTypes">
       <EntityTypeMapping TypeName="NgocTrang_V2Model.DeliveryType">
         <MappingFragment StoreEntitySet="DeliveryType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Value" ColumnName="Value" />

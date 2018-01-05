@@ -368,3 +368,6 @@ D:\NTLBE\WebCore\bin\Debug\SimpleInjector.Integration.Web.Mvc.xml
 D:\NTLBE\WebCore\obj\Debug\WebCore.csprojResolveAssemblyReference.cache
 D:\NTLBE\WebCore\obj\Debug\WebCore.dll
 D:\NTLBE\WebCore\obj\Debug\WebCore.pdb
+F:\ntl_v2\WebCore\obj\Debug\WebCore.csprojResolveAssemblyReference.cache
+F:\ntl_v2\WebCore\obj\Debug\WebCore.dll
+F:\ntl_v2\WebCore\obj\Debug\WebCore.pdb
