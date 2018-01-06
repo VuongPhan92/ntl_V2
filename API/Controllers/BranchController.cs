@@ -28,15 +28,17 @@ namespace API.Controllers
         {
             try
             {
-                var branchesList = iBranchService.GetActiveBranches().ToList();
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
-                if(!isAllow)
+                if (!isAllow)
                 {
-                    return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
+                var branchesList = iBranchService.GetActiveBranches();
                 if(branchesList != null)
                 {
-                    if (branchesList.Count > 0)
+                    if (branchesList.Count() > 0)
                     {
                         return GetResponseSuccess(branchesList, HttpStatusCode.OK);
                     }
@@ -60,15 +62,17 @@ namespace API.Controllers
         {
             try
             {
-                var branchesList = iBranchService.GetAllBranches().ToList();
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
-                if(!isAllow)
+                if (!isAllow)
                 {
-                    return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
+                var branchesList = iBranchService.GetAllBranches();
                 if (branchesList != null)
                 {
-                    if (branchesList.Count > 0)
+                    if (branchesList.Count() > 0)
                     {
                         return GetResponseSuccess(branchesList, HttpStatusCode.OK);
                     }
@@ -92,11 +96,13 @@ namespace API.Controllers
         {
             try
             {
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
-                if(!isAllow)
+                if (!isAllow)
                 {
                     return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
                 var tokenizedUserId = iAccountService.GetUserIdByToken(token);
                 branchVM.UserId = tokenizedUserId;
                 iBranchService.AddBranch(branchVM);
@@ -119,11 +125,13 @@ namespace API.Controllers
         {
             try
             {
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
                 if (!isAllow)
                 {
                     return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
                 var tokenizedUserId = iAccountService.GetUserIdByToken(token);
                 iBranchService.UpdateBranchName(id, name , tokenizedUserId);
                 return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
@@ -145,11 +153,13 @@ namespace API.Controllers
         {
             try
             {
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
                 if (!isAllow)
                 {
                     return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
                 var tokenizedUserId = iAccountService.GetUserIdByToken(token);
                 iBranchService.UpdateBranchAddress(id, address, tokenizedUserId);
                 return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
@@ -171,11 +181,13 @@ namespace API.Controllers
         {
             try
             {
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
                 if (!isAllow)
                 {
                     return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
-                }                                                    
+                }
+                //proceed request                                                  
                 var tokenizedUserId = iAccountService.GetUserIdByToken(token);
                 iBranchService.UpdateBranchName(id, phone, tokenizedUserId);
                 return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
@@ -197,11 +209,13 @@ namespace API.Controllers
         {
             try
             {
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
                 if (!isAllow)
                 {
                     return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
                 var tokenizedUserId = iAccountService.GetUserIdByToken(token);
                 iBranchService.UpdateBranchName(id, email, tokenizedUserId);
                 return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
@@ -223,13 +237,43 @@ namespace API.Controllers
         {
             try
             {
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
                 if (!isAllow)
                 {
                     return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
                 var tokenizedUserId = iAccountService.GetUserIdByToken(token);
                 iBranchService.UpdateBranchCode(id, branchCode, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/Branch/Revoke
+        [Route("Revoke/{id}")]
+        [HttpPost]
+        public HttpResponseMessage ActiveBranch(string id, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iBranchService.ActiveBranch(id, tokenizedUserId);
                 return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
             }
             catch (NullReferenceException)
@@ -249,13 +293,15 @@ namespace API.Controllers
         {
             try
             {
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
                 if (!isAllow)
                 {
                     return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
                 var tokenizedUserId = iAccountService.GetUserIdByToken(token);
-                iBranchService.DeleteBranch(id, tokenizedUserId);
+                iBranchService.InactiveBranch(id, tokenizedUserId);
                 return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
             }
             catch (NullReferenceException)

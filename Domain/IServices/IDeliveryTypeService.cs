@@ -52,6 +52,7 @@ namespace Domain.IServices
         /// <param name="userId">Guid of user</param>
         void UpdateDeliveryTypeDescription(string deliveryTypeId, string description, string userId);
 
+
         /// <summary>
         /// Active specific inactive delivery type 
         /// </summary>

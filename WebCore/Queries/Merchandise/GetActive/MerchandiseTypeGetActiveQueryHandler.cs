@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebCore.Queries.Merchandise.GetActive
+namespace WebCore.Queries
 {
     public class MerchandiseTypeGetActiveQueryHandler : IQueryHandler<MerchandiseTypeGetActiveQuery, IEnumerable<MerchandiseType>>
     {

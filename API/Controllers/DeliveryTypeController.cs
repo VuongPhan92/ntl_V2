@@ -1,5 +1,6 @@
 ﻿using Domain.Constant;
 using Domain.IServices;
+using Domain.ViewModels;
 using System;
 using System.Linq;
 using System.Net;
@@ -11,12 +12,12 @@ namespace API.Controllers
     [RoutePrefix("NgocTrang/Api/DeliveryType")]
     public class DeliveryTypeController : BaseController
     {
-        private IDeliveryTypeService iDeliveryTypeServices;
+        private IDeliveryTypeService iDeliveryTypeService;
         private IAccountService iAccountService;
 
-        public DeliveryTypeController(IDeliveryTypeService _iDeliveryTypeServices, IAccountService _iAccountService)
+        public DeliveryTypeController(IDeliveryTypeService _iDeliveryTypeService, IAccountService _iAccountService)
         {
-            iDeliveryTypeServices = _iDeliveryTypeServices;
+            iDeliveryTypeService = _iDeliveryTypeService;
             iAccountService = _iAccountService;
         }
 
@@ -27,13 +28,14 @@ namespace API.Controllers
         {
             try
             {
-                var deliveryTypeList = iDeliveryTypeServices.GetActiveDeliveryTypes();
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
                 if (!isAllow)
                 {
                     return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
-
+                //proceed request
+                var deliveryTypeList = iDeliveryTypeService.GetActiveDeliveryTypes();
                 if(deliveryTypeList!=null)
                 {
                     if (deliveryTypeList.Count() > 0)
@@ -58,7 +60,6 @@ namespace API.Controllers
 
         }
 
-
         //GET: NgocTrang/Api/DeliveryType/GetAll
         [Route("GetAll")]
         [HttpGet]
@@ -66,12 +67,14 @@ namespace API.Controllers
         {
             try
             {
-                var deliveryTypes = iDeliveryTypeServices.GetAllDeliveryTypes();
+                //check token info
                 var isAllow = iAccountService.IsTokenAvailable(token);
                 if (!isAllow)
                 {
                     return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
+                //proceed request
+                var deliveryTypes = iDeliveryTypeService.GetAllDeliveryTypes();
                 if (deliveryTypes.Count() >0)
                 {
                     return GetResponseSuccess(deliveryTypes, HttpStatusCode.OK);
@@ -90,6 +93,175 @@ namespace API.Controllers
                 return GetResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
 
+        }
+
+        //POST: NgocTrang/Api/DeliveryType/Add
+        [Route("Add")]
+        [HttpPost]
+        public HttpResponseMessage Add(DeliveryTypeVM deliveryTypeVM, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                deliveryTypeVM.UserId = tokenizedUserId;
+                iDeliveryTypeService.AddDeliveryType(deliveryTypeVM);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/DeliveryType/UpdateValue
+        [Route("UpdateValue/{id}/{unit}")]
+        [HttpPost]
+        public HttpResponseMessage UpdateDeliveryTypeValue(string id, string value, string token)
+        {
+            try
+            {
+                //check token info 
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iDeliveryTypeService.UpdateDeliveryTypeName(id, value, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/DeliveryType/UpdateName
+        [Route("UpdateName/{id}/{unit}")]
+        [HttpPost]
+        public HttpResponseMessage UpdateDeliveryTypeName(string id, string name, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iDeliveryTypeService.UpdateDeliveryTypeName(id, name, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/DeliveryType/UpdateDescription
+        [Route("UpdateDescription/{id}/{unit}")]
+        [HttpPost]
+        public HttpResponseMessage UpdateDeliveryTypeDescription(string id, string description, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iDeliveryTypeService.UpdateDeliveryTypeName(id, description, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/DeliveryType/Revoke
+        [Route("Revoke/{id}")]
+        [HttpPost]
+        public HttpResponseMessage ActiveDeliveryType(string id, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iDeliveryTypeService.ActiveDeliveryType(id, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/DeliveryType/Delete
+        [Route("Delete/{id}")]
+        [HttpPost]
+        public HttpResponseMessage DeleteDeliveryType(string id, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iDeliveryTypeService.InactiveDeliveryType(id, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
         }
     }
 }

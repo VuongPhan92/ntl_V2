@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Data;
+using Infrastructure.Queries;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebCore.Queries.Merchandise.GetActive
+namespace WebCore.Queries
 {
-    class MerchandiseTypeGetActiveQuery
+    public class MerchandiseTypeGetActiveQuery  :IQuery<IEnumerable<MerchandiseType>>
     {
     }
 }

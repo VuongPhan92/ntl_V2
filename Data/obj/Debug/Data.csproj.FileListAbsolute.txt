@@ -118,3 +118,13 @@ F:\ntl_v2\Data\bin\Debug\EntityFramework.SqlServer.xml
 F:\ntl_v2\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 F:\ntl_v2\Data\obj\Debug\Data.dll
 F:\ntl_v2\Data\obj\Debug\Data.pdb
+D:\ntl_V2\Data\bin\Debug\Data.dll.config
+D:\ntl_V2\Data\bin\Debug\Data.dll
+D:\ntl_V2\Data\bin\Debug\Data.pdb
+D:\ntl_V2\Data\bin\Debug\EntityFramework.dll
+D:\ntl_V2\Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\ntl_V2\Data\bin\Debug\EntityFramework.xml
+D:\ntl_V2\Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\ntl_V2\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\ntl_V2\Data\obj\Debug\Data.dll
+D:\ntl_V2\Data\obj\Debug\Data.pdb
