@@ -67,6 +67,11 @@
     <Compile Include="Command\Merchandise\Update\MerchandiseTypeDescriptionUpdateCommand.cs" />
     <Compile Include="Command\Merchandise\Update\MerchandiseTypeNameUpdateCommand.cs" />
     <Compile Include="Command\Merchandise\Update\MerchandiseTypeTypeUpdateCommand.cs" />
+    <Compile Include="Command\Status\Add\StatusAddCommand.cs" />
+    <Compile Include="Command\Status\Delete\StatusDeleteCommand.cs" />
+    <Compile Include="Command\Status\Update\StatusUpdateActiveCommand.cs" />
+    <Compile Include="Command\Status\Update\StatusUpdateDescriptionCommand.cs" />
+    <Compile Include="Command\Status\Update\StatusUpdateNameCommand.cs" />
     <Compile Include="Constant\ExceptionMessageConstant.cs" />
     <Compile Include="Constant\SucessMessageConstant.cs" />
     <Compile Include="IServices\IAccountService.cs" />
@@ -84,6 +89,7 @@
     <Compile Include="ViewModels\Chart\GetBolOnSpecificLocationDataVM.cs" />
     <Compile Include="ViewModels\MerchandiseTypeVM.cs" />
     <Compile Include="ViewModels\SpeedSMS.cs" />
+    <Compile Include="ViewModels\StatusVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.Infrastructure\Core\Core.csproj">

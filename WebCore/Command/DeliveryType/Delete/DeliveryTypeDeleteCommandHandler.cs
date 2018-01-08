@@ -40,7 +40,7 @@ namespace WebCore.Command
                         Source_Id = deliveryTypeEntity.DeliveryId,
                         Action = "Xóa",
                         Current_value = deliveryTypeEntity.Name,
-                        CreatedDate = deliveryTypeEntity.DeletedDate,
+                        CreatedDate = System.DateTime.Now,
                         CreatedBy = command.UserId
                     };
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });

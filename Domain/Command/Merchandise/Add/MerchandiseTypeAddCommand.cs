@@ -6,6 +6,5 @@ namespace Domain.Command
     public class MerchandiseTypeAddCommand
     {
         public MerchandiseTypeVM MerchandiseType { get; set; }
-        public string UserId { get; set; }
     }
 }

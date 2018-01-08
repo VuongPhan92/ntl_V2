@@ -34,7 +34,7 @@ namespace WebCore.Command
                     activity.Source_Id = branchEntity.BranchId;
                     activity.Action = "Xóa";
                     activity.Current_value = branchEntity.Name;
-                    activity.CreatedDate = branchEntity.DeletedDate;
+                    activity.CreatedDate = System.DateTime.Now;
                     activity.CreatedBy = command.UserId;
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });
                 }

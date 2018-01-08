@@ -68,7 +68,7 @@ namespace WebCore.Services
 
         public void AddBranch(BranchVM branchVM)
         {                   
-            addBranchHandler.Handle(new BranchAddCommand { Branch = branchVM , UserId= branchVM.UserId });
+            addBranchHandler.Handle(new BranchAddCommand { Branch = branchVM });
         }
 
         public void UpdateBranchName(string branchId, string name,string userId)

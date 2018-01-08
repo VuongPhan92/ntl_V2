@@ -27,6 +27,7 @@ namespace WebCore.Services
 
         public MerchandiseTypeService(
             IQueryHandler<MerchandiseTypeGetAllQuery, IEnumerable<MerchandiseType>> _getAllMerchandiseTypeHandler,
+            IQueryHandler<MerchandiseTypeGetActiveQuery, IEnumerable<MerchandiseType>> _getActiveMerchandiseTypeHandler,
             ICommandHandler<MerchandiseTypeAddCommand> _addMerchandiseTypeHandler,
             ICommandHandler<MerchandiseTypeDeleteCommand> _inactiveMerchandiseTypeHandler,
             ICommandHandler<MerchandiseTypeNameUpdateCommand> _updateMerchandiseTypeNameHandler,
@@ -46,6 +47,7 @@ namespace WebCore.Services
             updateMerchandiseTypeUnitHandler = _updateMerchandiseTypeUnitHandler;
             activeMerchandiseTypeHandler = _activeMerchandiseTypeUnitHandler;
             getMerchandiseTypeByIdHandler = _getMerchandiseTypeByIdHandler;
+            getActiveMerchandiseTypeHandler = _getActiveMerchandiseTypeHandler;
         }
 
         public IEnumerable<MerchandiseType> GetActiveMerchandiseTypes()
@@ -60,7 +62,7 @@ namespace WebCore.Services
 
         public void AddMerchandise(MerchandiseTypeVM merchandiseTypeVM)
         {
-            addMerchandiseTypeHandler.Handle(new MerchandiseTypeAddCommand { MerchandiseType = merchandiseTypeVM ,UserId=merchandiseTypeVM.UserId});
+            addMerchandiseTypeHandler.Handle(new MerchandiseTypeAddCommand { MerchandiseType = merchandiseTypeVM });
         }
 
         public MerchandiseType GetMerchandiseTypeById(string merchandiseId)
@@ -98,14 +100,5 @@ namespace WebCore.Services
             inactiveMerchandiseTypeHandler.Handle(new MerchandiseTypeDeleteCommand { MerchandiseId = merchandiseId });
         }
 
-        public IEnumerable<MerchandiseType> GetActiveMerchandiseTypes()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<MerchandiseType> GetAllMerchandiseTypes()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

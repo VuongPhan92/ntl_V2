@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace WebCore.Queries
 {
-    public class StatusCodeGetAllQuery : IQuery<IEnumerable<Status>>
+    public class StatusGetAllQuery : IQuery<IEnumerable<Status>>
     {
     }
 }

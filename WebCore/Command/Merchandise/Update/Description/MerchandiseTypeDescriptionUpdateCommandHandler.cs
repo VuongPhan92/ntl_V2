@@ -40,9 +40,9 @@ namespace WebCore.Command.Merchandise.Update.Description
                         Source = "Loại hàng",
                         Source_Id = merchandiseTypeEntity.MerchandiseId,
                         Action = "Sửa",
-                        Previous_value = previousVal.ToString(),
-                        Current_value = null,
-                        CreatedDate = merchandiseTypeEntity.CreatedDate,
+                        Previous_value = previousVal,
+                        Current_value = command.Description,
+                        CreatedDate = System.DateTime.Now,
                         CreatedBy = command.UserId
                     };
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });

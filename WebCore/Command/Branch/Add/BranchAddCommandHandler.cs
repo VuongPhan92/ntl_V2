@@ -45,8 +45,8 @@ namespace WebCore.Command
                         Source_Id = branchEntity.BranchId,
                         Action = "Tạo",
                         Current_value = branchEntity.Name,
-                        CreatedDate = branchEntity.CreatedDate,
-                        CreatedBy = command.UserId
+                        CreatedDate = System.DateTime.Now,
+                        CreatedBy = command.Branch.UserId
                     };
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });
                    
