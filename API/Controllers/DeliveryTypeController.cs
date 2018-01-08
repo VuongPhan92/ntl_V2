@@ -125,7 +125,7 @@ namespace API.Controllers
         }
 
         //POST: NgocTrang/Api/DeliveryType/UpdateValue
-        [Route("UpdateValue/{id}/{unit}")]
+        [Route("UpdateValue/{id}/{value}")]
         [HttpPost]
         public HttpResponseMessage UpdateDeliveryTypeValue(string id, string value, string token)
         {
@@ -153,7 +153,7 @@ namespace API.Controllers
         }
 
         //POST: NgocTrang/Api/DeliveryType/UpdateName
-        [Route("UpdateName/{id}/{unit}")]
+        [Route("UpdateName/{id}/{name}")]
         [HttpPost]
         public HttpResponseMessage UpdateDeliveryTypeName(string id, string name, string token)
         {
@@ -181,7 +181,7 @@ namespace API.Controllers
         }
 
         //POST: NgocTrang/Api/DeliveryType/UpdateDescription
-        [Route("UpdateDescription/{id}/{unit}")]
+        [Route("UpdateDescription/{id}/{description}")]
         [HttpPost]
         public HttpResponseMessage UpdateDeliveryTypeDescription(string id, string description, string token)
         {

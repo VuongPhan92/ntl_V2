@@ -88,7 +88,7 @@ namespace API.Controllers
             }
         }
 
-        //GET: NgocTrang/Api/Status/Add
+        //POST: NgocTrang/Api/Status/Add
         [Route("Add")]
         [HttpPost]
         public HttpResponseMessage Add(StatusVM statusVM, string token)
@@ -105,6 +105,118 @@ namespace API.Controllers
                 var tokenizedUserId = iAccountService.GetUserIdByToken(token);
                 statusVM.UserId = tokenizedUserId;
                 iStatusService.AddStatus(statusVM);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/Status/UpdateName
+        [Route("UpdateName/{id}/{name}")]
+        [HttpPost]
+        public HttpResponseMessage UpdateStatusName(string id, string name, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iStatusService.UpdateStatusName(id, name, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/Status/UpdateDescription
+        [Route("UpdateDescription/{id}/{description}")]
+        [HttpPost]
+        public HttpResponseMessage UpdateStatusDescription(string id, string description, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iStatusService.UpdateStatusDescription(id, description, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/Status/Revoke
+        [Route("Revoke/{id}")]
+        [HttpPost]
+        public HttpResponseMessage ActiveStatus(string id, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iStatusService.ActiveStatus(id, tokenizedUserId);
+                return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
+            }
+            catch (NullReferenceException)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.RequestNullExceptionMassge);
+            }
+            catch (Exception ex)
+            {
+                return PostResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
+            }
+        }
+
+        //POST: NgocTrang/Api/Status/Delete
+        [Route("Delete/{id}")]
+        [HttpPost]
+        public HttpResponseMessage DeleteStatus(string id, string token)
+        {
+            try
+            {
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
+                {
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
+                }
+                //proceed request
+                var tokenizedUserId = iAccountService.GetUserIdByToken(token);
+                iStatusService.InactiveStatus(id, tokenizedUserId);
                 return PostResponseSuccess(HttpStatusCode.OK, SucessMessageConstant.RequestHandleSuccessful);
             }
             catch (NullReferenceException)
