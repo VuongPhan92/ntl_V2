@@ -7,7 +7,7 @@ using System.Web.Http.Cors;
                                                                 
 namespace API.Controllers
 {
-    [EnableCors(origins: "http://www.ntl.com.vn", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BaseController : ApiController
     {
         protected HttpResponseMessage GetResponseSuccess(object obj, HttpStatusCode httpCode)

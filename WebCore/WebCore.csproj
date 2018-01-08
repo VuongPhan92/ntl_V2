@@ -130,9 +130,9 @@
     <Compile Include="Queries\Merchandise\GetActive\MerchandiseTypeGetActiveQueryHandler.cs" />
     <Compile Include="Queries\Merchandise\GetAll\MerchandiseTypeGetAllQuery.cs" />
     <Compile Include="Queries\Merchandise\GetAll\MerchandiseTypeGetAllQueryHandler.cs" />
-    <Compile Include="Queries\Delivery\GetAll\DeliveryTypeGetAllQuery.cs" />
     <Compile Include="Queries\Merchandise\GetById\MerchandiseTypeGetByIdQuery.cs" />
     <Compile Include="Queries\Merchandise\GetById\MerchandiseTypeGetByIdQueryHandler.cs" />
+    <Compile Include="Queries\Delivery\GetAll\DeliveryTypeGetAllQuery.cs" />
     <Compile Include="Queries\Status\StatusCodeGetAll\StatusCodeGetAllQueryHandler.cs" />
     <Compile Include="Queries\Status\StatusCodeGetAll\StatusCodeGetAllQuery.cs" />
     <Compile Include="Queries\Branch\GetById\BranchGetByIdQuery.cs" />

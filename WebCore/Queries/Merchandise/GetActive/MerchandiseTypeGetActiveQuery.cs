@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebCore.Queries
 {
-    public class MerchandiseTypeGetActiveQuery :IQuery<IEnumerable<MerchandiseType>>
+    public class MerchandiseTypeGetActiveQuery  :IQuery<IEnumerable<MerchandiseType>>
     {
     }
 }

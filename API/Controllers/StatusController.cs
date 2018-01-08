@@ -1,4 +1,5 @@
-﻿using Domain.IServices;
+﻿using Domain.Constant;
+using Domain.IServices;
 using System;
 using System.Linq;
 using System.Net;
@@ -10,34 +11,46 @@ namespace API.Controllers
     [RoutePrefix("NgocTrang/Api/Status")]
     public class StatusController : BaseController
     {
-        private IStatusService iStatusServices;
-        public StatusController(IStatusService _iStatusServices)
+        private IStatusService iStatusService;
+        private IAccountService iAccountService;
+        public StatusController(IStatusService _iStatusService, IAccountService _iAccountService)
         {
-            iStatusServices = _iStatusServices;
+            iStatusService = _iStatusService;
+            iAccountService = _iAccountService;
         }
 
-        //GET: NgocTrang/Api/Status/GetStatus
-        [Route("GetStatus")]
+        //GET: NgocTrang/Api/Status/GetAll
+        [Route("GetAll")]
         [HttpGet]
-        public HttpResponseMessage GetStatus()
+        public HttpResponseMessage GetAllStatus(string token)
         {
-            var statusCodeList = iStatusServices.GetAllStatusCode();
             try
             {
-                if (statusCodeList.Count()>0)
+                //check token info
+                var isAllow = iAccountService.IsTokenAvailable(token);
+                if (!isAllow)
                 {
-                    return GetResponse(statusCodeList, HttpStatusCode.OK);
+                    return PostResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.TokenNotAvailable);
                 }
-                else
+                //proceed request
+                var statusList = iStatusService.GetAllStatus();
+                if (statusList != null)
                 {
-                    return GetResponse(HttpStatusCode.NotFound ,"Cannot get all status list");
+                    if (statusList.Count() > 0)
+                    {
+                        return GetResponseSuccess(statusList, HttpStatusCode.OK);
+                    }
+                    else
+                    {
+                        return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.EmptyListExceptionMassage);
+                    }
                 }
+                return GetResponseFail(HttpStatusCode.ExpectationFailed, ExceptionMessageConstant.NullListExceptionMessage);
             }
             catch (Exception ex)
             {
-                return GetResponse(HttpStatusCode.NotImplemented, ex.Message);
+                return GetResponseFail(HttpStatusCode.ExpectationFailed, ex.Message);
             }
         }
-      
     }
 }
