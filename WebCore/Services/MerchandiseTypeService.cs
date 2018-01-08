@@ -7,6 +7,7 @@ using Infrastructure.Queries;
 using System.Collections.Generic;
 using WebCore.Command;
 using WebCore.Queries;
+using System;
 
 namespace WebCore.Services
 {
@@ -40,6 +41,16 @@ namespace WebCore.Services
         public void DeleteMerchandise(string merchandiseId)
         {
             deleteMerchandiseTypeHandler.Handle(new MerchandiseTypeDeleteCommand { MerchandiseId = merchandiseId });
+        }
+
+        public IEnumerable<MerchandiseType> GetActiveMerchandiseTypes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<MerchandiseType> GetAllMerchandiseTypes()
+        {
+            throw new NotImplementedException();
         }
     }
 }
