@@ -34,7 +34,8 @@ namespace WebCore.Services
             ICommandHandler<MerchandiseTypeDescriptionUpdateCommand> _updateMerchandiseTypeDescriptionHandler,
             ICommandHandler<MerchandiseTypeUnitUpdateCommand> _updateMerchandiseTypeUnitHandler,
             ICommandHandler<MerchandiseTypeActiveUpdateCommand> _activeMerchandiseTypeUnitHandler   ,
-            IQueryHandler<MerchandiseTypeGetByIdQuery, MerchandiseType> _getMerchandiseTypeByIdHandler
+            IQueryHandler<MerchandiseTypeGetByIdQuery, MerchandiseType> _getMerchandiseTypeByIdHandler    ,
+            IQueryHandler<MerchandiseTypeGetActiveQuery, IEnumerable<MerchandiseType>> _getActiveMerchandiseTypeHandler
         )
         {
             getAllMerchandiseTypeHandler = _getAllMerchandiseTypeHandler;
@@ -46,6 +47,7 @@ namespace WebCore.Services
             updateMerchandiseTypeUnitHandler = _updateMerchandiseTypeUnitHandler;
             activeMerchandiseTypeHandler = _activeMerchandiseTypeUnitHandler;
             getMerchandiseTypeByIdHandler = _getMerchandiseTypeByIdHandler;
+            getActiveMerchandiseTypeHandler = _getActiveMerchandiseTypeHandler;
         }
 
         public IEnumerable<MerchandiseType> GetActiveMerchandiseTypes()
