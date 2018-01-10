@@ -42,8 +42,8 @@ namespace WebCore.Command
                     activity.Source_Id = merchandiseTypeEntity.MerchandiseId;
                     activity.Action = "Tạo";
                     activity.Current_value = merchandiseTypeEntity.Name;
-                    activity.CreatedDate = merchandiseTypeEntity.CreatedDate;
-                    activity.CreatedBy = command.UserId;
+                    activity.CreatedDate = System.DateTime.Now;
+                    activity.CreatedBy = command.MerchandiseType.UserId;
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });
                 }
                 catch (DbEntityValidationException dbEx)

@@ -116,6 +116,11 @@
     <Compile Include="Command\Merchandise\Update\Name\MerchandiseTypeNameUpdateCommandHandler.cs" />
     <Compile Include="Command\Merchandise\Update\Description\MerchandiseTypeDescriptionUpdateCommandHandler.cs" />
     <Compile Include="Command\Merchandise\Update\Type\MerchandiseTypeTypeUpdateCommandHandler.cs" />
+    <Compile Include="Command\Status\Add\StatusAddCommandHandler.cs" />
+    <Compile Include="Command\Status\Delete\StatusDeleteCommandHandler.cs" />
+    <Compile Include="Command\Status\Update\Active\StatusUpdateActiveCommandHandler.cs" />
+    <Compile Include="Command\Status\Update\Description\StatusUpdateDescriptionCommandHandler.cs" />
+    <Compile Include="Command\Status\Update\Name\StatusUpdateNameCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Branch\GetActive\BranchGetActiveQuery.cs" />
     <Compile Include="Queries\Branch\GetActive\BranchGetActiveQueryHandler.cs" />
@@ -133,10 +138,14 @@
     <Compile Include="Queries\Merchandise\GetById\MerchandiseTypeGetByIdQuery.cs" />
     <Compile Include="Queries\Merchandise\GetById\MerchandiseTypeGetByIdQueryHandler.cs" />
     <Compile Include="Queries\Delivery\GetAll\DeliveryTypeGetAllQuery.cs" />
-    <Compile Include="Queries\Status\StatusCodeGetAll\StatusCodeGetAllQueryHandler.cs" />
-    <Compile Include="Queries\Status\StatusCodeGetAll\StatusCodeGetAllQuery.cs" />
+    <Compile Include="Queries\Status\GetActive\StatusGetActiveQuery.cs" />
+    <Compile Include="Queries\Status\GetActive\StatusGetActiveQueryHandler.cs" />
+    <Compile Include="Queries\Status\GetAll\StatusGetAllQueryHandler.cs" />
+    <Compile Include="Queries\Status\GetAll\StatusGetAllQuery.cs" />
     <Compile Include="Queries\Branch\GetById\BranchGetByIdQuery.cs" />
     <Compile Include="Queries\Branch\GetById\BranchGetByIdQueyHandler.cs" />
+    <Compile Include="Queries\Status\GetById\StatusGetByIdQuery.cs" />
+    <Compile Include="Queries\Status\GetById\StatusGetByIdQueryHandler.cs" />
     <Compile Include="Services\ActivityService.cs" />
     <Compile Include="Services\BranchService.cs" />
     <Compile Include="Services\DeliveryTypeService.cs" />
@@ -165,9 +174,7 @@
       <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Command\Status\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

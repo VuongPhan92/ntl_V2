@@ -4,7 +4,6 @@ namespace Domain.ViewModels
 {
     public class BranchVM
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<int> Type { get; set; }
         public string Address { get; set; }

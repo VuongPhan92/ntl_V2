@@ -36,9 +36,9 @@ namespace WebCore.Command
                         Source = "Chi nhánh",
                         Source_Id = deliveryTypeEntity.DeliveryId,
                         Action = "Sửa",
-                        Previous_value = previousVal.ToString(),
+                        Previous_value = previousVal,
                         Current_value = command.Description,
-                        CreatedDate = deliveryTypeEntity.CreatedDate,
+                        CreatedDate = System.DateTime.Now,
                         CreatedBy = command.UserId
                     };
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });

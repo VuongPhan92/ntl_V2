@@ -10,6 +10,5 @@ namespace Domain.Command
     public class DeliveryTypeAddCommand
     {
         public DeliveryTypeVM  DeliveryType { get; set; }
-        public string UserId { get; set; }
     }
 }

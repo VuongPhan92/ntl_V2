@@ -41,8 +41,8 @@ namespace WebCore.Command
                         Source_Id = merchandiseTypeEntity.MerchandiseId,
                         Action = "Sửa",
                         Previous_value = previousVal.ToString(),
-                        Current_value = null,
-                        CreatedDate = merchandiseTypeEntity.CreatedDate,
+                        Current_value = command.CalculationUnit,
+                        CreatedDate = System.DateTime.Now,
                         CreatedBy = command.UserId
                     };
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });

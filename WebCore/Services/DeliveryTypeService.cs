@@ -62,7 +62,7 @@ namespace WebCore.Services
 
         public void AddDeliveryType(DeliveryTypeVM deliveryTypeVM)
         {
-            addDeliveryTypeHandler.Handle(new DeliveryTypeAddCommand { DeliveryType = deliveryTypeVM, UserId = deliveryTypeVM.UserId });
+            addDeliveryTypeHandler.Handle(new DeliveryTypeAddCommand { DeliveryType = deliveryTypeVM});
         }
 
         public void UpdateDeliveryTypeName(string deliveryTypeId, string name, string userId)

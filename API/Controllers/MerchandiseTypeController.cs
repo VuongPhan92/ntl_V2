@@ -131,7 +131,7 @@ namespace API.Controllers
         }
 
         //POST: NgocTrang/Api/MerchandiseType/UpdateName
-        [Route("UpdateName")]
+        [Route("UpdateName/{id}/{name}")]
         [HttpPost]
         public HttpResponseMessage UpdateMerchandiseTypeName(string id,string name, string token)
         {
@@ -159,7 +159,7 @@ namespace API.Controllers
         }
 
         //POST: NgocTrang/Api/MerchandiseType/UpdateUnit
-        [Route("UpdateUnit")]
+        [Route("UpdateUnit/{id}/{unit}")]
         [HttpPost]
         public HttpResponseMessage UpdateMerchandiseTypeUnit(string id, string unit, string token)
         {
@@ -187,7 +187,7 @@ namespace API.Controllers
         }
 
         //POST: NgocTrang/Api/MerchandiseType/UpdateType
-        [Route("UpdateType")]
+        [Route("UpdateType/{id}/{type}")]
         [HttpPost]
         public HttpResponseMessage UpdateMerchandiseTypeType(string id, string type, string token)
         {
@@ -215,7 +215,7 @@ namespace API.Controllers
         }
 
         //POST: NgocTrang/Api/MerchandiseType/UpdateDescription
-        [Route("UpdateDescription")]
+        [Route("UpdateDescription/{id}/{description}")]
         [HttpPost]
         public HttpResponseMessage UpdateMerchandiseTypeDescription(string id, string description, string token) 
         {

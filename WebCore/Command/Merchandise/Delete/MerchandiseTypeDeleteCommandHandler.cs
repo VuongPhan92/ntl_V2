@@ -35,7 +35,7 @@ namespace WebCore.Command
                     activity.Source_Id = merchandiseTypeEntity.MerchandiseId;
                     activity.Action = "Tạo";
                     activity.Current_value = merchandiseTypeEntity.Name;
-                    activity.CreatedDate = merchandiseTypeEntity.CreatedDate;
+                    activity.CreatedDate = System.DateTime.Now;
                     activity.CreatedBy = command.UserId;
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });
                 }

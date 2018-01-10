@@ -37,7 +37,7 @@ namespace WebCore.Command
                         Action = "Sửa",
                         Previous_value = previousVal,
                         Current_value = command.BranchCode,
-                        CreatedDate = branchEntity.CreatedDate,
+                        CreatedDate = System.DateTime.Now,
                         CreatedBy = command.UserId
                     };
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });

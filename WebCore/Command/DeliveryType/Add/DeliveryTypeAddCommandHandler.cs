@@ -41,8 +41,8 @@ namespace WebCore.Command
                         Source_Id = deliveryTypeEntity.DeliveryId,
                         Action = "Tạo",
                         Current_value = deliveryTypeEntity.Name,
-                        CreatedDate = deliveryTypeEntity.CreatedDate,
-                        CreatedBy = command.UserId
+                        CreatedDate = System.DateTime.Now,
+                        CreatedBy = command.DeliveryType.UserId
                     };
                     iActivityServices.AddActivity(new ActivityAddCommand { Activity = activity });
 

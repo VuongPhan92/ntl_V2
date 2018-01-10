@@ -27,6 +27,7 @@ namespace WebCore.Services
 
         public MerchandiseTypeService(
             IQueryHandler<MerchandiseTypeGetAllQuery, IEnumerable<MerchandiseType>> _getAllMerchandiseTypeHandler,
+            IQueryHandler<MerchandiseTypeGetActiveQuery, IEnumerable<MerchandiseType>> _getActiveMerchandiseTypeHandler,
             ICommandHandler<MerchandiseTypeAddCommand> _addMerchandiseTypeHandler,
             ICommandHandler<MerchandiseTypeDeleteCommand> _inactiveMerchandiseTypeHandler,
             ICommandHandler<MerchandiseTypeNameUpdateCommand> _updateMerchandiseTypeNameHandler,
@@ -62,7 +63,7 @@ namespace WebCore.Services
 
         public void AddMerchandise(MerchandiseTypeVM merchandiseTypeVM)
         {
-            addMerchandiseTypeHandler.Handle(new MerchandiseTypeAddCommand { MerchandiseType = merchandiseTypeVM ,UserId=merchandiseTypeVM.UserId});
+            addMerchandiseTypeHandler.Handle(new MerchandiseTypeAddCommand { MerchandiseType = merchandiseTypeVM });
         }
 
         public MerchandiseType GetMerchandiseTypeById(string merchandiseId)
@@ -99,5 +100,6 @@ namespace WebCore.Services
         {
             inactiveMerchandiseTypeHandler.Handle(new MerchandiseTypeDeleteCommand { MerchandiseId = merchandiseId });
         }
+
     }
 }
